@@ -1,12 +1,17 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import ProgressBar from './components/ProgressBar.vue'
+import store from './store/index.js'
+import router from "./router"
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+
+var bar = new Vue(ProgressBar).$mount();
+Vue.prototype.$bar = bar;
+document.body.appendChild(bar.$el);
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    render: h => h(App),
+    store,
+    router
 }).$mount('#app')
